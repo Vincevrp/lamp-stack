@@ -1,0 +1,24 @@
+# Configurationfile LAMP Stack
+
+name: 'LAMP Stack'
+cpus: 2
+memory: 1024
+update: false
+hostname: 'lamp-stack'
+ip-address: 172.16.16.16
+
+auth:
+  db_root: 'db_root_passwd'
+  ssh: 'ssh_passwd'
+
+folders:
+  provision: './provision'
+  share: './share'
+
+digitalocean:
+  api_key: ''
+  ssh_username: 'vagrant'
+  ssh_key_path: 'key'
+  ssh_key_name: 'vagrant'
+  region: 'ams3'
+  size: '1gb'

@@ -1,0 +1,39 @@
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+SyslogFacility AUTHPRIV
+
+# Authentication
+PermitRootLogin no
+PermitEmptyPasswords no
+PasswordAuthentication no
+AuthorizedKeysFile	.ssh/authorized_keys
+ChallengeResponseAuthentication no
+
+# GSSAPI options
+GSSAPIAuthentication yes
+GSSAPICleanupCredentials no
+
+UsePAM yes
+X11Forwarding no
+UseDNS no
+
+# Accept locale-related environment variables
+AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+AcceptEnv XMODIFIERS
+
+# Override default of no subsystems
+Subsystem	sftp	/usr/libexec/openssh/sftp-server
+
+# Settings for developer account
+Match User developer
+    ForceCommand internal-sftp
+    ChrootDirectory /var/www
+    PasswordAuthentication yes
+    PermitTunnel no
+    AllowAgentForwarding no
+    AllowTcpForwarding no
+    X11Forwarding no
