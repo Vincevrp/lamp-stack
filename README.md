@@ -2,6 +2,8 @@
 
 **L**inux (CentOS 7) + **A**pache + **M**ariaDB + **P**HP 7.2
 
+Run locally or deploy to [Digital Ocean](https://m.do.co/c/f1696d71129e)
+
 ## Requirements
 
 * Vagrant
