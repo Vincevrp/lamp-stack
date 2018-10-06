@@ -5,6 +5,7 @@
 ## Requirements
 
 * Vagrant
+    * Vagrant-digitalocean: `vagrant plugin install vagrant-digitalocean`
 * Virtualbox
 
 ## Usage
@@ -23,7 +24,7 @@ You can easily create a new database using `./scripts/create-database.sh`.
 
 ### Install Drupal
 
-Drupal installation can be done automatically using `./scripts/install-drupal.sh`
+Drupal installation can be done automatically using `./scripts/install-drupal.sh`.
 
 ## Configuration
 
@@ -53,3 +54,12 @@ digitalocean:                   # Refer to vagrant-digitalocean docs
   size: '1gb'
 ```
 
+## Deploy to DigitalOcean
+
+1. Make sure `vagrant-digitalocean` is installed.
+1. Generate ssh key using `./scripts/generate-ssh-key.sh`.
+1. Enter the required configuration in `config.yml`:
+    * `api_key`: Your DigitalOcean [API key](https://cloud.digitalocean.com/settings/api/tokens).
+    * `region`: Desired region, check `vagrant-digitalocean-list regions`.
+    * `size`: Desired size, check `vagrant-digitalocean-list sizes`.
+1. Deploy by running `vagrant up --provider=digital_ocean`.
